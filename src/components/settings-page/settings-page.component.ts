@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/modules/framework/services/db-service';
 
 @Component({
   selector: 'app-settings-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPageComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private db:DbService) { }
 
   ngOnInit(): void {
+    
   }
 
 }
