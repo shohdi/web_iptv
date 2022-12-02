@@ -5,7 +5,8 @@ import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [{
  path:'',
- component:LayoutComponent
+ component:LayoutComponent,
+ loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule)
 }];
 
 @NgModule({

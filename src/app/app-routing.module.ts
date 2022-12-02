@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [{
   path: '',
-  loadChildren: () => import('../components/settings-page/settings-page.module').then(m => m.SettingsPageModule)
+  loadChildren: () => import('../components/layout/layout.module').then(m => m.LayoutModule)
 }];
 
 @NgModule({
