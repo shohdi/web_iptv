@@ -31,8 +31,14 @@ public loading?:boolean = false;
       {
         this.loading = true;
           //alert(this.txtM3u.value );
-          this.db.setChannels(this.txtM3u.value);
-          this.loading = false;
+          this.db.addUrl(this.txtM3u.value).subscribe(()=>{
+            this.loading=false;
+          },(err)=>{
+            this.loading=false;
+            console.log(err);
+            alert(err );
+          });
+         
       }
   }
 
