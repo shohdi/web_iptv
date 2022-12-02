@@ -1,15 +1,15 @@
+<app-loading [ShowLoading]="this.loading" ></app-loading>
 
-
-<form>
+<form [formGroup]="form" (ngSubmit)="this.formSubmit()" >
     <div class="row ">
         <div class="col-md-8 form-group">
             <label for="txtM3u" class="control-label">m3u list url</label>
-            <input type="text" name="txtM3u" id="txtM3u" class="form-control"/>
+            <input type="text" name="txtM3u" formControlName="txtM3u" placeholder="m3u url" class="form-control"/>
 
         </div>
         <div class="col-md-4 form-group">
             <label  class="control-label block">&nbsp;</label>
-            <button type="button" class="btn btn-success">Refresh</button>
+            <button type="submit" class="btn btn-success" >Refresh</button>
             
         </div>
     </div>
