@@ -44,12 +44,12 @@ public loading?:boolean = false;
             const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
              this.http.get(this.txtM3u.value,{ headers, responseType: 'text'}).subscribe((res)=>{
               
-              console.log(res);
-              debugger;
+              this.handleResponse(res);
+              
              },(err)=>{
-              debugger;
+              
              },()=>{ 
-              debugger;
+             
               this.loading = false;});
             
           },(err)=>{
@@ -59,6 +59,9 @@ public loading?:boolean = false;
           });
          
       }
+  }
+  handleResponse(res: string) {
+    
   }
 
 }
