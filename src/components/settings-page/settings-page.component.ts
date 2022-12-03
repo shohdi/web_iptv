@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from 'src/modules/framework/services/db-service';
 import { FormGroup, FormControl, FormArray,Validators } from '@angular/forms'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-settings-page',
@@ -18,10 +19,18 @@ get txtM3u(): FormControl {
 
 public loading?:boolean = false;
 
-  constructor(private db:DbService) { }
+  constructor(private db:DbService,private http:HttpClient) { }
 
   ngOnInit(): void {
-
+    this.loading = true;
+    setTimeout(()=>{
+      this.db.getUrl().subscribe((ret)=>{
+        this.txtM3u.setValue(  ret);
+        
+      },()=>{},()=>this.loading = false);
+    },1000);
+      
+     
   }
 
   public formSubmit():void
@@ -32,7 +41,17 @@ public loading?:boolean = false;
         this.loading = true;
           //alert(this.txtM3u.value );
           this.db.addUrl(this.txtM3u.value).subscribe(()=>{
-            this.loading=false;
+            const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+             this.http.get(this.txtM3u.value,{ headers, responseType: 'text'}).subscribe((res)=>{
+              
+              console.log(res);
+              debugger;
+             },(err)=>{
+              debugger;
+             },()=>{ 
+              debugger;
+              this.loading = false;});
+            
           },(err)=>{
             this.loading=false;
             console.log(err);
