@@ -7,7 +7,15 @@ const routes: Routes = [{
  path:'',
  component:LayoutComponent,
  loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule)
-}];
+}
+,
+{
+  path:'search',
+  component:LayoutComponent,
+  loadChildren: () => import('../search-page/search-page.module').then(m => m.SearchPageModule)
+ }
+
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

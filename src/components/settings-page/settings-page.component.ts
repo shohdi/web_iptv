@@ -4,6 +4,7 @@ import { FormGroup, FormControl, FormArray,Validators } from '@angular/forms'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AsyncSubject, Observable } from 'rxjs';
 import { WaitForPrevious } from 'src/modules/framework/services/waitForPrevious';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-page',
@@ -21,7 +22,7 @@ get txtM3u(): FormControl {
 
 public loading?:boolean = false;
 
-  constructor(private db:DbService,private http:HttpClient) { }
+  constructor(private db:DbService,private http:HttpClient,private router:Router ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -47,7 +48,8 @@ public loading?:boolean = false;
              this.http.get(this.txtM3u.value,{ headers, responseType: 'text'}).subscribe((res)=>{
               
               this.handleResponse(res);
-              
+              this.loading = false;
+              this.router.navigate(['/search']);
              },(err)=>{
               this.loading = false;
              },()=>{ 
