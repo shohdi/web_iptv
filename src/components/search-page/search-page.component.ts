@@ -13,10 +13,10 @@ import { WaitForPrevious } from 'src/modules/framework/services/waitForPrevious'
 export class SearchPageComponent implements OnInit {
 
   form = new FormGroup({
-    txtM3u: new FormControl("",Validators.required)
+    txtSearch: new FormControl("")
 });
-get txtM3u(): FormControl {
-  return this.form.get('txtM3u') as FormControl;
+get txtSearch(): FormControl {
+  return this.form.get('txtSearch') as FormControl;
 }
 
 public loading?:boolean = false;
@@ -35,7 +35,7 @@ public loading?:boolean = false;
       
       if (this.form.valid)
       {
-        //this.loading = true;
+         
          
          
       }
